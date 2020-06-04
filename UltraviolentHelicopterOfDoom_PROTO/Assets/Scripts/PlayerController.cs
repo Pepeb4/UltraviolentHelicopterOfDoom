@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     public float playerSpeed = 5;
-    public float playerJump = 5;
+    public float playerJump = 7;
     //private float hDir;
     //private float vDir;
 

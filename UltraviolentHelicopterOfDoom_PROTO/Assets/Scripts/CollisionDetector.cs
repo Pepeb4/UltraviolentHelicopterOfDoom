@@ -33,6 +33,13 @@ public class CollisionDetector : MonoBehaviour
             endGamePanel2.gameObject.SetActive(true);
             //Destroy(gameObject);
         }
+        if (other.gameObject.tag == "Bullet")
+        {
+            //collision
+            //endScore.text = gameScore.text;
+            endGamePanel2.gameObject.SetActive(true);
+            //Destroy(gameObject);
+        }
     }
 
     public void RestartGame()
