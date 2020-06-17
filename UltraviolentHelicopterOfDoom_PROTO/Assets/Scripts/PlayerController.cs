@@ -8,11 +8,11 @@ public class PlayerController : MonoBehaviour
 
     public float playerSpeed = 5;
     public float playerJump = 7;
-    //private float hDir;
-    //private float vDir;
-
-    private bool jump = false;
+    
+    //private bool jump = false;
     private bool ground = false;
+    private bool doubleJump = false;
+    
 
     private void Start()
     {      
@@ -26,30 +26,60 @@ public class PlayerController : MonoBehaviour
     {
 
         transform.position += new Vector3(1, 0, 0) * Time.deltaTime * playerSpeed;
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && ground)
+        /* if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && ground)
         {
+
             jump = true;
-            
-        }
-    }
+                      
+        } */
 
-    private void FixedUpdate()
-    {
-        
-        if (jump)
-        {
-            rb.AddForce(new Vector2(0f, playerJump), ForceMode2D.Impulse);
-            jump = false;
+        if (rb.velocity.y == 0)
+            ground = true;
+        else
             ground = false;
+
+        if (ground)
+            doubleJump = true;
+
+        if (ground && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            Jump();
+        }
+        else if (doubleJump && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            Jump();
+            doubleJump = false;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+  
+
+   /*  private void FixedUpdate()
+    {
+        if(jump)
+        {
+            
+                rb.AddForce(new Vector2(0f, playerJump), ForceMode2D.Impulse);
+                jump = false;
+                ground = false;
+                           
+        }
+        
+        
+    } */
+
+   /* private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Ground")
         {
+            
             ground = true;
         }
+    } */
+
+    void Jump()
+    {
+        rb.AddForce(new Vector2(0f, playerJump), ForceMode2D.Impulse);
     }
 
 }

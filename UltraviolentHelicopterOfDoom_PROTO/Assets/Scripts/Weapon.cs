@@ -10,7 +10,7 @@ public class Weapon : MonoBehaviour
     public GameObject bulletPrefab;
 
 
-    public float maxTime = 1;
+    public float maxTime = 2;
     public float minTime = 0;
 
     //current time
@@ -47,8 +47,9 @@ public class Weapon : MonoBehaviour
     void Shoot()
     {
         time = 0;
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject newBullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation) as GameObject;
+        Destroy(newBullet, 1);
     }
 
-
+   
 }
