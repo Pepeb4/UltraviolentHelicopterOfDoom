@@ -24,6 +24,7 @@ public class CollisionDetector : MonoBehaviour
             //collision
             //endScore.text = gameScore.text;
             endGamePanel.gameObject.SetActive(true);
+            Time.timeScale = 0f;
             //Destroy(gameObject);
         }
         if (other.gameObject.tag == "Obstacle")
@@ -31,6 +32,7 @@ public class CollisionDetector : MonoBehaviour
             //collision
             //endScore.text = gameScore.text;
             endGamePanel2.gameObject.SetActive(true);
+            Time.timeScale = 0f;
             //Destroy(gameObject);
         }
         if (other.gameObject.tag == "Bullet")
@@ -38,6 +40,7 @@ public class CollisionDetector : MonoBehaviour
             //collision
             //endScore.text = gameScore.text;
             endGamePanel2.gameObject.SetActive(true);
+            Time.timeScale = 0f;
             //Destroy(gameObject);
         }
     }
@@ -45,5 +48,6 @@ public class CollisionDetector : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
 }
